@@ -1,13 +1,14 @@
 {
-  "name": "nome",
+  "name": "detector",
   "version": "0.0.1",
   "description": "descricao",
   "author": "Indiara Camillo Menegat",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "build": "npm run format && npm run lint && tsc --noEmit -p . && rimraf dist && babel src --extensions \".ts,.js\" --out-dir dist --copy-files --no-copy-ignored --source-maps",
-    "build:production": "babel src --extensions \".ts,.js\" --out-dir dist --copy-files --no-copy-ignored",
+    "build:prod": "tsc --project tsconfig.prod.json",
+    "build:dev": "npm run format && npm run lint && tsc --project tsconfig.dev.json && rimraf dist && babel src --extensions \".ts,.js\" --out-dir dist --copy-files --no-copy-ignored --source-maps",
+    "prebuild:prod": "babel src --extensions \".ts,.js\" --out-dir dist --copy-files --no-copy-ignored",
     "format": "prettier --write \"src/**/*.ts\"",
     "start": "node dist/index.js",
     "lint": "eslint \"{src,test}/**/*.ts\" --fix",
