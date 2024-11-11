@@ -1,13 +1,16 @@
 import { HttpError } from 'common/errors/HttpError';
 import { BaseController } from 'contracts/controllers/BaseController';
-import { HttpRequest, HttpResponse } from 'contracts/server/Http';
+import {
+  CreateProfileAnalyticRequest,
+  HttpResponse,
+} from 'contracts/server/Http';
 import { logger } from 'infra/logger';
 import { GenerateProfileAnalysisUseCase } from 'usecases/GenerateProfileAnalysisUseCase';
 
 export class CreateProfileAnalysis implements BaseController {
   constructor(readonly useCase: GenerateProfileAnalysisUseCase) {}
 
-  async handle(request: HttpRequest): Promise<HttpResponse> {
+  async handle(request: CreateProfileAnalyticRequest): Promise<HttpResponse> {
     try {
       const { params } = request;
       const { username } = params;

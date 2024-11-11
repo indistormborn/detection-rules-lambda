@@ -1,4 +1,4 @@
-import { HttpRequest, HttpResponse } from 'contracts/server/Http';
+import { CreateProfileDataRequest, HttpResponse } from 'contracts/server/Http';
 import { BaseController } from '../contracts/controllers/BaseController';
 import { GenerateProfileDataUseCase } from 'usecases/GenerateProfileDataUseCase';
 import { logger } from 'infra/logger';
@@ -7,7 +7,7 @@ import { HttpError } from 'common/errors/HttpError';
 export class CreateProfileData implements BaseController {
   constructor(readonly useCase: GenerateProfileDataUseCase) {}
 
-  async handle(request: HttpRequest): Promise<HttpResponse> {
+  async handle(request: CreateProfileDataRequest): Promise<HttpResponse> {
     try {
       const { body } = request;
       const { id, username, force } = body;

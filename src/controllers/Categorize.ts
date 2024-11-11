@@ -1,21 +1,14 @@
 import { HttpError } from 'common/errors/HttpError';
 import { BaseController } from 'contracts/controllers/BaseController';
-import { HttpRequest, HttpResponse } from 'contracts/server/Http';
+import { CategorizeRequest, HttpResponse } from 'contracts/server/Http';
 import { logger } from 'infra/logger';
 import { CategorizationUseCase } from 'usecases/CategorizationUseCase';
-interface CategorizeHttpRequest extends HttpRequest {
-  body: {
-    username?: string;
-    id?: string;
-    force?: boolean;
-  };
-}
 
 export class Categorize implements BaseController {
   // eslint-disable-next-line prettier/prettier
-  constructor(readonly useCase: CategorizationUseCase) {}
+  constructor(readonly useCase: CategorizationUseCase) { }
 
-  async handle(request: CategorizeHttpRequest): Promise<HttpResponse> {
+  async handle(request: CategorizeRequest): Promise<HttpResponse> {
     try {
       const { body } = request;
       const { username, id, force } = body;

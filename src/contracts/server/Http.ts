@@ -9,6 +9,31 @@ export interface HttpRequest {
   body?: any;
 }
 
+export interface CategorizeRequest extends HttpRequest {
+  body: {
+    id?: string;
+    username?: string;
+    force?: boolean;
+  };
+}
+
+export interface CreateProfileAnalyticRequest extends HttpRequest {
+  params: {
+    username: string;
+  };
+  query: {
+    force?: string;
+  };
+}
+
+export interface CreateProfileDataRequest extends HttpRequest {
+  body: {
+    id?: string;
+    username?: string;
+    force?: boolean;
+  };
+}
+
 export interface HttpResponse {
   status: number;
   body?: unknown;
