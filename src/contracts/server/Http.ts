@@ -10,12 +10,14 @@ export interface HttpRequest {
 }
 
 export interface CategorizeRequest extends HttpRequest {
-  body: {
-    id?: string;
-    username?: string;
-    force?: boolean;
-  };
+  body: CategorizeBody;
 }
+
+export type CategorizeBody = {
+  id?: string;
+  username?: string;
+  force?: boolean;
+};
 
 export interface CreateProfileAnalyticRequest extends HttpRequest {
   params: {
@@ -27,12 +29,14 @@ export interface CreateProfileAnalyticRequest extends HttpRequest {
 }
 
 export interface CreateProfileDataRequest extends HttpRequest {
-  body: {
-    id?: string;
-    username?: string;
-    force?: boolean;
-  };
+  body: CreateProfileDataBody;
 }
+
+export type CreateProfileDataBody = {
+  id?: string;
+  username?: string;
+  force?: boolean;
+};
 
 export interface HttpResponse {
   status: number;
