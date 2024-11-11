@@ -6,11 +6,10 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "build:prod": "tsc --project tsconfig.prod.json",
-    "build:dev": "npm run format && npm run lint && tsc --project tsconfig.dev.json && rimraf dist && babel src --extensions \".ts,.js\" --out-dir dist --copy-files --no-copy-ignored --source-maps",
-    "prebuild:prod": "babel src --extensions \".ts,.js\" --out-dir dist --copy-files --no-copy-ignored",
+    "build:dev": "rimraf dist/dev && npm run format && npm run lint && tsc --project tsconfig.dev.json && babel src --extensions \".ts,.js\" --out-dir dist/dev --copy-files --no-copy-ignored --source-maps",
+    "build:prod": "rimraf dist/prod && tsc --project tsconfig.prod.json && babel src --extensions \".ts,.js\" --out-dir dist/prod --copy-files --no-copy-ignored",
     "format": "prettier --write \"src/**/*.ts\"",
-    "start": "node dist/index.js",
+    "start": "node dist/dev/index.js",
     "lint": "eslint \"{src,test}/**/*.ts\" --fix",
     "debug": "node --inspect -r ts-node/register src/index.ts"
   },
