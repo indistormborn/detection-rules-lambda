@@ -1,5 +1,5 @@
-import { APIGatewayProxyResult } from "aws-lambda";
-import { HttpResponse, IHttpError } from "contracts/server/Http";
+import { APIGatewayProxyResult } from 'aws-lambda';
+import { HttpResponse, IHttpError } from 'contracts/server/Http';
 
 export function normalize(value: number, min: number, max: number): number {
   return (value - min) / (max - min);

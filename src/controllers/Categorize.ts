@@ -6,7 +6,7 @@ import { CategorizationUseCase } from 'usecases/CategorizationUseCase';
 
 export class Categorize implements BaseController {
   // eslint-disable-next-line prettier/prettier
-  constructor(readonly useCase: CategorizationUseCase) { }
+  constructor(readonly useCase: CategorizationUseCase) {}
 
   async handle(request: CategorizeRequest): Promise<HttpResponse> {
     try {
