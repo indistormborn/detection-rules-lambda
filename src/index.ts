@@ -1,6 +1,17 @@
-import { default as Database } from 'infra/database/Connection';
-import { default as Server } from 'infra/server/Server';
+import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 
-(async () => {
-  await Promise.all([Database.init(), Server.init()]);
-})();
+export const handler = async (
+  event: APIGatewayProxyEvent,
+): Promise<APIGatewayProxyResult> => {
+  console.log('Received event:', JSON.stringify(event, null, 2));
+
+  const response = {
+    statusCode: 200,
+    body: JSON.stringify({
+      message: 'Hello from Lambda!',
+      input: event,
+    }),
+  };
+
+  return response;
+};
