@@ -3,4 +3,3 @@
 /coverage
 .env
 .vscode/*
-lambda-deployment_accessKeys.csv
